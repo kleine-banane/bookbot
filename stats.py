@@ -21,5 +21,4 @@ def sort_dict(dict):
     sorted_list = []
     for key, value in sorted(dict.items(), key=lambda item: item[1], reverse=True):
         sorted_list.append({key:value})
-    del sorted_list[0]
     return sorted_list

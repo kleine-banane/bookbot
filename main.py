@@ -11,14 +11,20 @@ def main():
         num_words = count_words(text)
         num_of_chars = count_chars(text)
         sorted_chars = sort_dict(num_of_chars)
-        print("============ BOOKBOT ============")
-        print(f"Analyzing book found at {book}")
-        print("----------- Word Count ----------")
-        print(f"Found {num_words} total words.")
-        print("--------- Character Count -------")
-        for char in sorted_chars:
-            print(str(char).strip("{}").replace("'", ""), end=", ")
-        print("============= END ===============")
+        
+        char_count_str = "\n".join(
+            [str(char).strip("{}").replace("'", "") for char in sorted_chars if ' ' not in char]
+        )
+        
+        print(f"""
+============ BOOKBOT ============
+Analyzing book found at {book}
+----------- Word Count ----------
+Found {num_words} total words.
+--------- Character Count -------
+{char_count_str}
+============= END ===============
+""")
     except FileNotFoundError:
         print(f"Error: Could not find book at {book}")
 
